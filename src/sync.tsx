@@ -91,6 +91,8 @@ export function mergeData(a: Data, b: Data): Data {
   });
 }
 
+const hasContent = (d: Data) => d.sessions.length + d.workouts.length + d.bodyweight.length + d.customExercises.length > 0;
+
 export function SyncProvider({ children }: { children: React.ReactNode }) {
   const { ready, getData, applyRemote, updatedAt } = useStore();
   const [cfg, setCfg] = useState<Cfg | null>(null);
@@ -162,6 +164,11 @@ export function SyncProvider({ children }: { children: React.ReactNode }) {
         let push = false;
 
         if (!remote) {
+          push = true;
+        } else if (!localChanged && !hasContent(local) && hasContent(remote)) {
+          // порожній пристрій і в репозиторії є записи (у старих записів може не бути мітки часу)
+          result = remote;
+        } else if (!remoteChanged && hasContent(local) && !hasContent(remote)) {
           push = true;
         } else if (remoteChanged && !localChanged) {
           result = remote;
