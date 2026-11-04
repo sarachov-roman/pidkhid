@@ -1,0 +1,152 @@
+import type { GroupId } from '../theme';
+
+export type Exercise = {
+  id: string;
+  name: string;
+  group: GroupId;
+  /** Вправа з власною вагою: вага за замовчуванням 0 (можна додати обтяження) */
+  bodyweight?: boolean;
+  /** Для статичних вправ рахуємо секунди замість повторів */
+  timed?: boolean;
+  custom?: boolean;
+};
+
+// Увага: id не змінювати, до них прив'язані збережені записи.
+export const presetExercises: Exercise[] = [
+  // Ноги і сідниці
+  { id: 'squat', name: 'Присідання зі штангою', group: 'legs' },
+  { id: 'front-squat', name: 'Фронтальні присідання', group: 'legs' },
+  { id: 'smith-squat', name: 'Присідання в Сміті', group: 'legs' },
+  { id: 'hack-squat', name: 'Гакк-присідання в тренажері', group: 'legs' },
+  { id: 'goblet-squat', name: 'Гоблет-присідання з гантеллю', group: 'legs' },
+  { id: 'leg-press', name: 'Жим ногами', group: 'legs' },
+  { id: 'leg-press-narrow', name: 'Жим ногами вузькою постановкою', group: 'legs' },
+  { id: 'rdl', name: 'Румунська тяга', group: 'legs' },
+  { id: 'sumo-deadlift', name: 'Станова тяга сумо', group: 'legs' },
+  { id: 'lunges', name: 'Випади з гантелями', group: 'legs' },
+  { id: 'smith-lunges', name: 'Випади в Сміті', group: 'legs' },
+  { id: 'bulgarian', name: 'Болгарські випади', group: 'legs' },
+  { id: 'step-up', name: 'Зашагування на лаву', group: 'legs' },
+  { id: 'leg-ext', name: 'Розгинання ніг у тренажері', group: 'legs' },
+  { id: 'leg-curl', name: 'Згинання ніг у тренажері', group: 'legs' },
+  { id: 'leg-curl-seated', name: 'Згинання ніг сидячи', group: 'legs' },
+  { id: 'leg-curl-lying', name: 'Згинання ніг лежачи', group: 'legs' },
+  { id: 'adductor', name: 'Зведення ніг у тренажері', group: 'legs' },
+  { id: 'abductor', name: 'Розведення ніг у тренажері', group: 'legs' },
+  { id: 'hip-thrust', name: 'Сідничний міст зі штангою', group: 'legs' },
+  { id: 'glute-machine', name: 'Сідничний міст у тренажері', group: 'legs' },
+  { id: 'cable-kickback', name: 'Відведення ноги назад на блоці', group: 'legs' },
+  { id: 'calf-raise', name: 'Підйоми на носки', group: 'legs' },
+  { id: 'calf-seated', name: 'Підйоми на носки сидячи', group: 'legs' },
+  { id: 'calf-leg-press', name: 'Носки в тренажері для жиму ногами', group: 'legs' },
+
+  // Спина
+  { id: 'pullup', name: 'Підтягування', group: 'back', bodyweight: true },
+  { id: 'chinup', name: 'Підтягування зворотним хватом', group: 'back', bodyweight: true },
+  { id: 'assisted-pullup', name: 'Гравітрон (підтягування з противагою)', group: 'back' },
+  { id: 'deadlift', name: 'Станова тяга', group: 'back' },
+  { id: 'bb-row', name: 'Тяга штанги в нахилі', group: 'back' },
+  { id: 't-bar-row', name: 'Тяга Т-грифа', group: 'back' },
+  { id: 'chest-row', name: 'Тяга гантелей лежачи на похилій лаві', group: 'back' },
+  { id: 'db-row', name: 'Тяга гантелі однією рукою', group: 'back' },
+  { id: 'lat-pulldown', name: 'Тяга верхнього блоку', group: 'back' },
+  { id: 'lat-narrow', name: 'Тяга верхнього блоку вузьким хватом', group: 'back' },
+  { id: 'lat-reverse', name: 'Тяга верхнього блоку зворотним хватом', group: 'back' },
+  { id: 'lat-single', name: 'Тяга верхнього блоку однією рукою', group: 'back' },
+  { id: 'cable-row', name: 'Тяга нижнього блоку', group: 'back' },
+  { id: 'cable-row-wide', name: 'Тяга нижнього блоку широким хватом', group: 'back' },
+  { id: 'hammer-row', name: 'Важільна тяга в тренажері (Хаммер)', group: 'back' },
+  { id: 'machine-row', name: 'Тяга в тренажері сидячи', group: 'back' },
+  { id: 'hammer-pulldown', name: 'Важільна тяга зверху (Хаммер)', group: 'back' },
+  { id: 'straight-pulldown', name: 'Пуловер на блоці прямими руками', group: 'back' },
+  { id: 'machine-pullover', name: 'Важільна (ричажна) тяга на широчайші', group: 'back' },
+  { id: 'hyperext', name: 'Гіперекстензія', group: 'back', bodyweight: true },
+  { id: 'bb-shrug', name: 'Шраги зі штангою', group: 'back' },
+  { id: 'db-shrug', name: 'Шраги з гантелями', group: 'back' },
+  { id: 'good-morning', name: 'Нахили зі штангою (гуд-морнінг)', group: 'back' },
+
+  // Груди
+  { id: 'bench', name: 'Жим штанги лежачи', group: 'chest' },
+  { id: 'db-bench', name: 'Жим гантелей лежачи', group: 'chest' },
+  { id: 'incline', name: 'Жим на похилій лаві', group: 'chest' },
+  { id: 'incline-db', name: 'Жим гантелей на похилій лаві', group: 'chest' },
+  { id: 'decline', name: 'Жим на лаві з негативним нахилом', group: 'chest' },
+  { id: 'smith-bench', name: 'Жим у Сміті лежачи', group: 'chest' },
+  { id: 'smith-incline', name: 'Жим у Сміті на похилій лаві', group: 'chest' },
+  { id: 'chest-press', name: 'Жим від грудей у тренажері', group: 'chest' },
+  { id: 'hammer-chest', name: 'Важільний жим у тренажері (Хаммер)', group: 'chest' },
+  { id: 'incline-machine', name: 'Жим на похилій у тренажері', group: 'chest' },
+  { id: 'pec-deck', name: 'Батерфляй (метелик, пек-дек)', group: 'chest' },
+  { id: 'flyes', name: 'Розведення гантелей', group: 'chest' },
+  { id: 'incline-flyes', name: 'Розведення гантелей на похилій лаві', group: 'chest' },
+  { id: 'crossover', name: 'Кросовер', group: 'chest' },
+  { id: 'crossover-low', name: 'Кросовер знизу вгору', group: 'chest' },
+  { id: 'db-pullover', name: 'Пуловер з гантеллю', group: 'chest' },
+  { id: 'dips', name: 'Віджимання на брусах', group: 'chest', bodyweight: true },
+  { id: 'pushups', name: 'Віджимання від підлоги', group: 'chest', bodyweight: true },
+
+  // Плечі
+  { id: 'ohp', name: 'Жим штанги стоячи', group: 'shoulders' },
+  { id: 'db-press', name: 'Жим гантелей сидячи', group: 'shoulders' },
+  { id: 'arnold', name: 'Жим Арнольда', group: 'shoulders' },
+  { id: 'smith-ohp', name: 'Жим у Сміті сидячи', group: 'shoulders' },
+  { id: 'shoulder-press', name: 'Жим на плечі в тренажері', group: 'shoulders' },
+  { id: 'lateral', name: 'Махи в сторони', group: 'shoulders' },
+  { id: 'cable-lateral', name: 'Махи в сторони на блоці', group: 'shoulders' },
+  { id: 'machine-lateral', name: 'Махи в сторони в тренажері', group: 'shoulders' },
+  { id: 'front-raise', name: 'Підйоми гантелей перед собою', group: 'shoulders' },
+  { id: 'upright-row', name: 'Тяга до підборіддя', group: 'shoulders' },
+  { id: 'rear-delt', name: 'Розведення в нахилі', group: 'shoulders' },
+  { id: 'reverse-pec', name: 'Зворотні розведення в пек-деку', group: 'shoulders' },
+  { id: 'face-pull', name: 'Тяга канату до обличчя', group: 'shoulders' },
+  { id: 'cable-rear', name: 'Розведення на задню дельту в кросовері', group: 'shoulders' },
+
+  // Руки
+  { id: 'bb-curl', name: 'Підйом штанги на біцепс', group: 'arms' },
+  { id: 'ez-curl', name: 'Підйом EZ-грифа на біцепс', group: 'arms' },
+  { id: 'db-curl', name: 'Згинання рук з гантелями', group: 'arms' },
+  { id: 'hammer', name: 'Молоткові згинання', group: 'arms' },
+  { id: 'incline-curl', name: 'Згинання з гантелями на похилій лаві', group: 'arms' },
+  { id: 'preacher', name: 'Згинання на лаві Скотта', group: 'arms' },
+  { id: 'machine-curl', name: 'Згинання рук у тренажері', group: 'arms' },
+  { id: 'cable-curl', name: 'Згинання рук на нижньому блоці', group: 'arms' },
+  { id: 'concentration', name: 'Концентровані згинання', group: 'arms' },
+  { id: 'reverse-curl', name: 'Згинання зворотним хватом', group: 'arms' },
+  { id: 'wrist-curl', name: 'Згинання зап’ясть', group: 'arms' },
+  { id: 'wrist-ext', name: 'Розгинання зап’ясть', group: 'arms' },
+  { id: 'wrist-roller', name: 'Ролик для передпліч (намотування)', group: 'arms' },
+  { id: 'farmer-hold', name: 'Утримання гантелей (хват)', group: 'arms', timed: true },
+  { id: 'skull', name: 'Французький жим', group: 'arms' },
+  { id: 'pushdown', name: 'Розгинання рук на блоці', group: 'arms' },
+  { id: 'rope-pushdown', name: 'Розгинання рук на блоці з канатом', group: 'arms' },
+  { id: 'overhead-ext', name: 'Розгинання з-за голови на блоці', group: 'arms' },
+  { id: 'db-overhead', name: 'Розгинання гантелі з-за голови', group: 'arms' },
+  { id: 'kickback', name: 'Розгинання руки в нахилі', group: 'arms' },
+  { id: 'triceps-machine', name: 'Розгинання рук у тренажері', group: 'arms' },
+  { id: 'dips-machine', name: 'Віджимання в тренажері на трицепс', group: 'arms' },
+  { id: 'close-grip', name: 'Жим вузьким хватом', group: 'arms' },
+  { id: 'bench-dips', name: 'Зворотні віджимання від лави', group: 'arms', bodyweight: true },
+
+  // Прес
+  { id: 'plank', name: 'Планка', group: 'core', bodyweight: true, timed: true },
+  { id: 'side-plank', name: 'Бічна планка', group: 'core', bodyweight: true, timed: true },
+  { id: 'crunch', name: 'Скручування', group: 'core', bodyweight: true },
+  { id: 'reverse-crunch', name: 'Зворотні скручування', group: 'core', bodyweight: true },
+  { id: 'cable-crunch', name: 'Скручування на блоці', group: 'core' },
+  { id: 'machine-crunch', name: 'Скручування в тренажері', group: 'core' },
+  { id: 'hanging-raise', name: 'Підйом ніг у висі', group: 'core', bodyweight: true },
+  { id: 'captain-chair', name: 'Підйом ніг на брусах', group: 'core', bodyweight: true },
+  { id: 'lying-raise', name: 'Підйом ніг лежачи', group: 'core', bodyweight: true },
+  { id: 'bicycle', name: 'Велосипед', group: 'core', bodyweight: true },
+  { id: 'russian-twist', name: 'Російські скручування', group: 'core', bodyweight: true },
+  { id: 'ab-wheel', name: 'Ролик для преса', group: 'core', bodyweight: true },
+  { id: 'woodchop', name: 'Дровосік на блоці', group: 'core' },
+  { id: 'side-bend', name: 'Нахили в сторони з гантеллю', group: 'core' },
+
+  // Шия
+  { id: 'neck-flex', name: 'Згинання шиї з диском лежачи', group: 'neck' },
+  { id: 'neck-ext', name: 'Розгинання шиї з диском лежачи', group: 'neck' },
+  { id: 'neck-harness', name: 'Шия з упряжжю', group: 'neck' },
+  { id: 'neck-machine', name: 'Шия в тренажері', group: 'neck' },
+  { id: 'neck-side', name: 'Бічні нахили шиї з диском', group: 'neck' },
+];
