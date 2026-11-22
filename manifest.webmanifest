@@ -1,12 +1,12 @@
 {
- "name": "Підхід",
- "short_name": "Підхід",
+ "name": "Forma",
+ "short_name": "Forma",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
  "orientation": "portrait",
- "background_color": "#1B2026",
- "theme_color": "#1B2026",
+ "background_color": "#07070B",
+ "theme_color": "#07070B",
  "lang": "uk",
  "icons": [
   {

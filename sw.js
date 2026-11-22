@@ -1,5 +1,5 @@
 // Спершу мережа (щоб оновлення приходили), без мережі беремо збережене
-const C = 'pidkhid-v2';
+const C = 'forma-v3';
 self.addEventListener('install', (e) => {
   e.waitUntil(
     (async () => {
